@@ -7,6 +7,8 @@ export default class ProductList extends React.Component {
     this.state = {
       products: []
     };
+
+    this.renderProducts = this.renderProducts.bind(this);
   }
 
   componentDidMount() {
@@ -24,12 +26,24 @@ export default class ProductList extends React.Component {
       .catch(err => console.error(err));
   }
 
+  renderProducts() {
+    const { products } = this.state;
+    const productsList = products.map(product => {
+      return (
+        <ProductListItem
+          key={product.productId}
+          name={product.name}
+          price={product.price}
+          description={product.shortDescription}/>
+      );
+    });
+    return productsList;
+  }
+
   render() {
     return (
-      <div className='d-flex no-wrap'>
-        <ProductListItem />
-        <ProductListItem />
-        <ProductListItem />
+      <div className='d-flex flex-wrap'>
+        {this.renderProducts()}
       </div>
     );
   }
