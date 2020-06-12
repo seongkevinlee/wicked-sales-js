@@ -26,7 +26,9 @@ export default class ProductDetails extends React.Component {
 
   render() {
     return (
-      null
+      <div>
+        <h1>product details</h1>
+      </div>
     );
   }
 }
