@@ -19,6 +19,7 @@ app.get('/api/health-check', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// GET ALL PRODUCTS LIST
 app.get('/api/products', (req, res, next) => {
 
   const sql = `
@@ -32,6 +33,41 @@ app.get('/api/products', (req, res, next) => {
 
   db.query(sql)
     .then(result => res.json(result.rows))
+    .catch(err => next(err));
+});
+
+// GET ONE PRODUCT USING ID
+app.get('/api/products/:productId', (req, res, next) => {
+  let { productId } = req.params;
+  productId = parseInt(req.params.productId);
+  if (!Number.isInteger(productId) || productId <= 0) {
+    return res.status(400).json({
+      error: 'productId must be a positive integer'
+    });
+  }
+
+  const sql = `
+  SELECT  "productId",
+          "name",
+          "price",
+          "image",
+          "longDescription",
+          "shortDescription"
+    FROM  "products"
+   WHERE  "productId" = $1
+  `;
+
+  const params = [productId];
+
+  db.query(sql, params)
+    .then(result => {
+      const product = result.rows[0];
+      if (!product) {
+        next(new ClientError(`cannot find product with ID ${productId}`, 404));
+      } else {
+        res.json(product);
+      }
+    })
     .catch(err => next(err));
 });
 
