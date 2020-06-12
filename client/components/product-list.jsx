@@ -43,7 +43,7 @@ export default class ProductList extends React.Component {
 
   render() {
     return (
-      <div className='d-flex flex-wrap'>
+      <div className='d-flex flex-wrap justify-content-around'>
         {this.renderProducts()}
       </div>
     );
