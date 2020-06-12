@@ -27,7 +27,7 @@ export default class App extends React.Component {
         name: name,
         params: params
       }
-    }, () => this.showView());
+    });
   }
 
   showView() {
