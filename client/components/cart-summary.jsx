@@ -40,7 +40,7 @@ export default class CartSummary extends React.Component {
           </button>
         </div>
         <div className='d-flex flex-column align-items-center col-12'>
-          {this.renderCartItems()}
+          {this.props.cart.length <= 0 ? <h3 className='m-5'>There are no items in your cart</h3> : this.renderCartItems()}
         </div>
         <div className='ml-5'>
           <h2>
