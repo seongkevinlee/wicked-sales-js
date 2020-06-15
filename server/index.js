@@ -145,7 +145,7 @@ app.post('/api/cart', (req, res, next) => {
       return db.query(sql, params);
     })
     .then(result => {
-      const newCardItemId = result.rows[0].cartItemId;
+      const newCartItemId = result.rows[0].cartItemId;
       const sql = `
       SELECT
               "c"."cartItemId",
@@ -158,7 +158,7 @@ app.post('/api/cart', (req, res, next) => {
         JOIN  "products" AS "p" USING ("productId")
        WHERE  "c"."cartItemId" = $1
       `;
-      const params = [newCardItemId];
+      const params = [newCartItemId];
       return db.query(sql, params)
         .then(result => {
           const newCartItem = result.rows[0];
@@ -169,6 +169,60 @@ app.post('/api/cart', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// ADD NEW ORDER
+app.post('/api/orders', (req, res, next) => {
+  const cartId = req.session.cartId;
+  if (!cartId) {
+    next(new ClientError('There is no cartId in your session', 400));
+    return;
+  }
+  if (!req.body.name) {
+    next(new ClientError('Name is a required field', 400));
+    return;
+  }
+  if (!req.body.creditCard) {
+    next(new ClientError('Credit Card is a required field', 400));
+    return;
+  }
+  if (!req.body.shippingAddress) {
+    next(new ClientError('Shipping Address is a required field', 400));
+    return;
+  }
+
+  const sql = `
+  INSERT INTO   "orders"
+    ("cartId", "name", "creditCard", "shippingAddress")
+  VALUES
+    ($1, $2, $3, $4)
+  RETURNING "cartId"
+  `;
+
+  const params = [
+    cartId,
+    req.body.name,
+    req.body.creditCard,
+    req.body.shippingAddress
+  ];
+
+  db.query(sql, params)
+    .then(result => {
+      const cartId = result.rows[0];
+      if (!cartId) {
+        throw new ClientError('Bad request', 400);
+      } else {
+        delete req.session.cartId;
+      }
+    })
+    .then(res.status(200).json({
+      cartId: cartId,
+      name: req.body.name,
+      creditCard: req.body.creditCard,
+      shippingAddress: req.body.shippingAddress
+    }));
+
+});
+
+// ERROR HANDLING
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
