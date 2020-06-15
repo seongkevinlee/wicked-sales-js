@@ -2,3 +2,9 @@
   object-fit: cover;
   height: 50%;
 }
+
+.cart-image {
+  width: 450px;
+  height: 400px;
+  object-fit: contain;
+}
