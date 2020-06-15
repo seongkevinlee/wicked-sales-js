@@ -38,6 +38,7 @@ export default class ProductDetails extends React.Component {
             <h1>{this.state.product ? this.state.product.name : 'No product found'}</h1>
             <h4 className='text-muted mt-3 mb-3'>{this.state.product ? `$${this.state.product.price}` : 'No product found'}</h4>
             <p>{this.state.product ? this.state.product.shortDescription : 'No product found'}</p>
+            <button className='btn btn-primary' onClick={() => this.props.addToCart(this.state.product)}>Add to cart</button>
           </div>
         </div>
         <p className='mt-4'>{this.state.product ? this.state.product.longDescription : 'No product found'}</p>
