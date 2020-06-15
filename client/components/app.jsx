@@ -71,7 +71,7 @@ export default class App extends React.Component {
         newCartItems.push(cartItem);
         this.setState({
           cart: newCartItems
-        }, () => this.getCartItems);
+        });
       });
   }
 
