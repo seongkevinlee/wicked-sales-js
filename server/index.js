@@ -204,21 +204,16 @@ app.post('/api/orders', (req, res, next) => {
     req.body.shippingAddress
   ];
 
-  db.query(sql, params)
-    .then(result => {
-      const cartId = result.rows[0];
-      if (!cartId) {
-        throw new ClientError('Bad request', 400);
-      } else {
-        delete req.session.cartId;
-      }
+  return db.query(sql, params)
+    .then(() => {
+      delete req.session.cartId;
+      res.status(200).json({
+        cartId: cartId,
+        name: req.body.name,
+        creditCard: req.body.creditCard,
+        shippingAddress: req.body.shippingAddress
+      });
     })
-    .then(res.status(200).json({
-      cartId: cartId,
-      name: req.body.name,
-      creditCard: req.body.creditCard,
-      shippingAddress: req.body.shippingAddress
-    }))
     .catch(err => next(err));
 });
 
