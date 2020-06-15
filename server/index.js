@@ -218,8 +218,8 @@ app.post('/api/orders', (req, res, next) => {
       name: req.body.name,
       creditCard: req.body.creditCard,
       shippingAddress: req.body.shippingAddress
-    }));
-
+    }))
+    .catch(err => next(err));
 });
 
 // ERROR HANDLING
