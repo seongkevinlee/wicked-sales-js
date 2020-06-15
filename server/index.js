@@ -67,15 +67,27 @@ app.get('/api/products/:productId', (req, res, next) => {
 
 // GET ALL PRODUCTS IN SHOPPING CART
 app.get('/api/cart', (req, res, next) => {
-  // console.log('req:', req.body);
-  const sql = `
-  SELECT  *
-    FROM  "carts"
-  `;
 
-  db.query(sql)
-    .then(result => res.json(result.rows[0]))
-    .catch(err => next(err));
+  if (!req.session.cartId) {
+    return [];
+  } else {
+    const sql = `
+      SELECT
+              "c"."cartItemId",
+              "c"."price",
+              "p"."productId",
+              "p"."image",
+              "p"."name",
+              "p"."shortDescription"
+        FROM  "cartItems" AS "c"
+        JOIN  "products" AS "p" USING ("productId")
+       WHERE  "c"."cartId" = $1
+      `;
+    const params = [req.session.cartId];
+    db.query(sql, params)
+      .then(result => res.json(result.rows))
+      .catch(err => next(err));
+  }
 });
 
 // ADD NEW ITEM INTO SHOPPING CART
@@ -98,12 +110,9 @@ app.post('/api/cart', (req, res, next) => {
   db.query(sql, params)
     .then(result => {
       const product = result.rows[0];
-      // console.log('product1:', product);
-      // console.log('req.session.cartId:', req.session.cartId);
       if (!product) {
         next(new ClientError(`Cannot find product with ID ${productId}`, 400));
       } else if (req.session.cartId) {
-        // //console.log('req.session.cartId:', req.session.cartId);
         const newCartItem = { cartId: req.session.cartId, price: product.price };
         return (newCartItem);
 
@@ -116,7 +125,6 @@ app.post('/api/cart', (req, res, next) => {
         return db.query(cartSql)
           .then(result => {
             const cartId = result.rows[0].cartId;
-            // console.log('cartId:', cartId);
             const newCartItem = { cartId: cartId, price: product.price };
             return newCartItem;
           });
@@ -124,7 +132,6 @@ app.post('/api/cart', (req, res, next) => {
     })
     .then(result => {
       req.session.cartId = result.cartId;
-      // console.log('result:', result);
       const sql = `
       INSERT INTO "cartItems"
                   ("cartId", "productId", "price")
@@ -133,12 +140,10 @@ app.post('/api/cart', (req, res, next) => {
       `;
 
       const params = [req.session.cartId, parseInt(productId), result.price];
-      // console.log('params:', params);
       return db.query(sql, params);
     })
     .then(result => {
       const newCardItemId = result.rows[0].cartItemId;
-      // console.log('newCardItemId:', newCardItemId);
       const sql = `
       SELECT
               "c"."cartItemId",
@@ -179,5 +184,5 @@ app.use((err, req, res, next) => {
 
 app.listen(process.env.PORT, () => {
   // eslint-disable-next-line no-console
-  // console.log('Listening on port', process.env.PORT);
+  console.log('Listening on port', process.env.PORT);
 });
