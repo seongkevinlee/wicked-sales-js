@@ -6,6 +6,7 @@ export default class CartSummary extends React.Component {
     super(props);
 
     this.renderCartItems = this.renderCartItems.bind(this);
+    this.calculateTotalCost = this.calculateTotalCost.bind(this);
   }
 
   renderCartItems(props) {
@@ -19,6 +20,16 @@ export default class CartSummary extends React.Component {
     return cartItemsList;
   }
 
+  calculateTotalCost() {
+    const cartItems = this.props.cart;
+    const costsArray = [];
+    cartItems.map(price => {
+      costsArray.push(price.price);
+    });
+    const totalCosts = costsArray.reduce((a, b) => a + b, 0);
+    return totalCosts;
+  }
+
   render() {
     return (
       <div>
@@ -30,6 +41,11 @@ export default class CartSummary extends React.Component {
         </div>
         <div className='d-flex flex-column align-items-center col-12'>
           {this.renderCartItems()}
+        </div>
+        <div className='ml-5'>
+          <h2>
+            {`Total: $${this.calculateTotalCost()}.00`}
+          </h2>
         </div>
       </div>
     );
