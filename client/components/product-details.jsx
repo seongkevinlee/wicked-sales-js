@@ -42,9 +42,6 @@ export default class ProductDetails extends React.Component {
           </div>
         </div>
         <p className='mt-4'>{this.state.product ? this.state.product.longDescription : 'No product found'}</p>
-        <div>
-
-        </div>
       </div>
     );
   }

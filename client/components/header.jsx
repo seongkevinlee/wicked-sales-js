@@ -9,7 +9,10 @@ export default function Header(props) {
           <i className='fas fa-search-dollar fa-2x ml-5'></i>
           <h1>Wicked Sales</h1>
         </header>
-        <header className='d-inline-flex align-items-center'>
+        <header
+          className='d-inline-flex align-items-center'
+          onClick={() => props.setView('cart', {})}
+          type='button'>
           <h4>{`${props.cartItemCount} Items`}</h4>
           <i className="fas fa-shopping-cart fa-2x ml-2 mr-5"></i>
         </header>
