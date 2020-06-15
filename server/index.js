@@ -69,7 +69,7 @@ app.get('/api/products/:productId', (req, res, next) => {
 app.get('/api/cart', (req, res, next) => {
 
   if (!req.session.cartId) {
-    return [];
+    return res.json([]);
   } else {
     const sql = `
       SELECT
@@ -95,8 +95,10 @@ app.post('/api/cart', (req, res, next) => {
   const productId = req.body.productId;
   if (!productId) {
     next(new ClientError('ProductId is a required field', 400));
+    return;
   } else if (productId <= 0) {
     next(new ClientError('ProductId must be an integer greater than 0', 400));
+    return;
   }
 
   const sql = `
@@ -111,7 +113,7 @@ app.post('/api/cart', (req, res, next) => {
     .then(result => {
       const product = result.rows[0];
       if (!product) {
-        next(new ClientError(`Cannot find product with ID ${productId}`, 400));
+        throw next(new ClientError(`Cannot find product with ID ${productId}`, 400));
       } else if (req.session.cartId) {
         const newCartItem = { cartId: req.session.cartId, price: product.price };
         return (newCartItem);
@@ -157,7 +159,7 @@ app.post('/api/cart', (req, res, next) => {
        WHERE  "c"."cartItemId" = $1
       `;
       const params = [newCardItemId];
-      db.query(sql, params)
+      return db.query(sql, params)
         .then(result => {
           const newCartItem = result.rows[0];
           res.json(newCartItem);
