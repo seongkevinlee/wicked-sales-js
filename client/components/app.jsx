@@ -20,6 +20,7 @@ export default class App extends React.Component {
     this.showView = this.showView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   componentDidMount() {
@@ -44,7 +45,7 @@ export default class App extends React.Component {
       case 'cart' :
         return <CartSummary setView={this.setView} cart={this.state.cart}/>;
       case 'checkout' :
-        return <CheckoutForm/>;
+        return <CheckoutForm placeOrder={this.placeOrder} cart={this.state.cart}/>;
       default :
         return null;
     }
@@ -82,10 +83,6 @@ export default class App extends React.Component {
   }
 
   placeOrder(order) {
-    // const name = order.name
-    // const creditCard = order.creditCard
-    // const shippingAddress = order.shippingAddress
-    // const
 
     fetch('/api/orders', {
       method: 'POST',

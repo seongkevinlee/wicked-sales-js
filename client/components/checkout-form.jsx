@@ -1,4 +1,5 @@
 import React from 'react';
+import CalculateTotalCost from './calculate-total-cost';
 
 export default class CheckoutForm extends React.Component {
   constructor(props) {
@@ -34,7 +35,9 @@ export default class CheckoutForm extends React.Component {
     return (
       <div className='m-auto col-10'>
         <h1>My Cart</h1>
-        <h4 className='text-muted mt-3'>Order Total:</h4>
+        <h4 className='text-muted mt-3'>
+          {`Order Total: $${CalculateTotalCost(this.props)}.00`}
+        </h4>
         <form className='pt-4'>
           <div className="form-group">
             <label htmlFor="name-input">Name</label>
@@ -67,7 +70,11 @@ export default class CheckoutForm extends React.Component {
         </form>
         <div className='d-flex justify-content-between'>
           <button className='btn btn-link'>&lt; Continue Shopping</button>
-          <button className='btn btn-success'>Place Order</button>
+          <button
+            className='btn btn-success'
+            onClick={this.props.placeOrder}>
+            Place Order
+          </button>
         </div>
 
       </div>
