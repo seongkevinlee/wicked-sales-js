@@ -3,13 +3,14 @@ import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
+import CheckoutForm from './checkout-form';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       view: {
-        name: 'catalog',
+        name: 'checkout',
         params: {}
       },
       cart: []
@@ -42,6 +43,8 @@ export default class App extends React.Component {
         return <ProductDetails setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}/>;
       case 'cart' :
         return <CartSummary setView={this.setView} cart={this.state.cart}/>;
+      case 'checkout' :
+        return <CheckoutForm/>;
       default :
         return null;
     }
@@ -74,6 +77,31 @@ export default class App extends React.Component {
         newCartItems.push(cartItem);
         this.setState({
           cart: newCartItems
+        });
+      });
+  }
+
+  placeOrder(order) {
+    // const name = order.name
+    // const creditCard = order.creditCard
+    // const shippingAddress = order.shippingAddress
+    // const
+
+    fetch('/api/orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(order)
+    })
+      .then(response => response.json())
+      .then(() => {
+        this.setState({
+          cart: [],
+          view: {
+            name: 'catalog',
+            params: {}
+          }
         });
       });
   }
