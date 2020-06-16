@@ -45,7 +45,7 @@ export default class App extends React.Component {
       case 'cart' :
         return <CartSummary setView={this.setView} cart={this.state.cart}/>;
       case 'checkout' :
-        return <CheckoutForm placeOrder={this.placeOrder} cart={this.state.cart}/>;
+        return <CheckoutForm placeOrder={this.placeOrder} cart={this.state.cart} setView={this.setView}/>;
       default :
         return null;
     }
