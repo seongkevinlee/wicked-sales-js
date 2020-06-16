@@ -83,7 +83,6 @@ export default class App extends React.Component {
   }
 
   placeOrder(order) {
-
     fetch('/api/orders', {
       method: 'POST',
       headers: {

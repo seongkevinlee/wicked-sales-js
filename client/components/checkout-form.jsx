@@ -32,6 +32,15 @@ export default class CheckoutForm extends React.Component {
   }
 
   render() {
+    const { name } = this.state;
+    const { creditCard } = this.state;
+    const { address } = this.state;
+    const order = {
+      name,
+      creditCard,
+      shippingAddress: address
+    };
+
     return (
       <div className='m-auto col-10'>
         <h1>My Cart</h1>
@@ -72,7 +81,7 @@ export default class CheckoutForm extends React.Component {
           <button className='btn btn-link'>&lt; Continue Shopping</button>
           <button
             className='btn btn-success'
-            onClick={this.props.placeOrder}>
+            onClick={() => this.props.placeOrder(order)}>
             Place Order
           </button>
         </div>
