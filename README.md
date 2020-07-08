@@ -10,13 +10,11 @@ Try the application live at [[http://seongkevinlee.com](http://seongkevinlee.com
 * CSS3
 * React
 * Bootstrap 4
-* react-spring
 * Node.js
 * PostgreSQL
 * Express
 * Webpack 4
 * Babel
-* AWS EC2
 
 ## Features
 * User can view the products for sale - Back End.
