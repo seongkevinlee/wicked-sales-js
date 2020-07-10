@@ -1,12 +1,12 @@
 import React from 'react';
 import CartSummaryItem from './cart-summary-item';
+import CalculateTotalCost from './calculate-total-cost';
 
 export default class CartSummary extends React.Component {
   constructor(props) {
     super(props);
 
     this.renderCartItems = this.renderCartItems.bind(this);
-    this.calculateTotalCost = this.calculateTotalCost.bind(this);
   }
 
   renderCartItems(props) {
@@ -18,16 +18,6 @@ export default class CartSummary extends React.Component {
 
     });
     return cartItemsList;
-  }
-
-  calculateTotalCost() {
-    const cartItems = this.props.cart;
-    const costsArray = [];
-    cartItems.map(price => {
-      costsArray.push(price.price);
-    });
-    const totalCosts = costsArray.reduce((a, b) => a + b, 0);
-    return totalCosts;
   }
 
   render() {
@@ -42,10 +32,15 @@ export default class CartSummary extends React.Component {
         <div className='d-flex flex-column align-items-center col-12'>
           {this.props.cart.length <= 0 ? <h3 className='m-5'>There are no items in your cart</h3> : this.renderCartItems()}
         </div>
-        <div className='ml-5'>
+        <div className='ml-5 mr-5 d-flex justify-content-between'>
           <h2>
-            {`Total: $${this.calculateTotalCost()}.00`}
+            {`Total: $${CalculateTotalCost(this.props)}.00`}
           </h2>
+          <button
+            className='btn btn-primary'
+            onClick={() => this.props.setView('checkout', {})}>
+            Checkout
+          </button>
         </div>
       </div>
     );

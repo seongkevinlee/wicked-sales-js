@@ -36,7 +36,7 @@ Try the application live at [[http://seongkevinlee.com](http://seongkevinlee.com
 * NPM 6 or higher
 * PostgreSQL 8 or higher
 
-## Getting Started
+### Getting Started
 1. Clone the respository
 ```
 git clone https://github.com/seongkevinlee/wicked-sales-js.git
