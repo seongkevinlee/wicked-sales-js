@@ -3,7 +3,7 @@ import React from 'react';
 export default function ProductListItem(props) {
 
   return (
-    <div className='border col-3 m-1'>
+    <div className='card-container card col-3 m-1'>
       <img className='product-img card-img-top pt-3'
         type='button'
         src={props.img}

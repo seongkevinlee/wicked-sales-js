@@ -22,9 +22,9 @@ export default class CartSummary extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="cart-summary">
         <div>
-          <button className='btn btn-link'
+          <button className='btn btn-info ml-5'
             onClick={() => this.props.setView('catalog', {})}>
             &lt; Back to catalog
           </button>
