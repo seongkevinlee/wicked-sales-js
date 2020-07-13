@@ -16,7 +16,7 @@ export default class ProductList extends React.Component {
   }
 
   getProducts() {
-    fetch('http://localhost:3000/api/products')
+    fetch('/api/products')
       .then(response => response.json())
       .then(data => {
         this.setState({
