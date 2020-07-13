@@ -2,7 +2,7 @@
 A full stack Node.js and React shopping card app.
 
 ## Live Demo
-Try the application live at [[http://seongkevinlee.com](http://seongkevinlee.com)]
+Try the application live at [[http://lens-craft.seongkevinlee.com](http://lens-craft.seongkevinlee.com)]
 
 ## Technologies Used
 * JavaScript (ES5, ES6)
