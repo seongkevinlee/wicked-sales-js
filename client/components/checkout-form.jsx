@@ -42,7 +42,7 @@ export default class CheckoutForm extends React.Component {
     };
 
     return (
-      <div className='m-auto col-10'>
+      <div className='checkout col-10'>
         <h1>My Cart</h1>
         <h4 className='text-muted mt-3'>
           {`Order Total: $${CalculateTotalCost(this.props)}.00`}
@@ -79,7 +79,7 @@ export default class CheckoutForm extends React.Component {
         </form>
         <div className='d-flex justify-content-between'>
           <button
-            className='btn btn-link'
+            className='btn btn-info'
             onClick={() => this.props.setView('catalog', {})}>
               &lt; Continue Shopping
           </button>
