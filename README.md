@@ -28,7 +28,7 @@ Try the application live at [[http://lens-craft.seongkevinlee.com](http://lens-c
 * User can place an order - Front End.
 
 ## Preview
-![demo-1](https://github.com/seongkevinlee/wicked-sales-js/blob/master/demo-1.gif?raw=true)
+![demo-1](https://github.com/seongkevinlee/wicked-sales-js/blob/master/demo-2.gif?raw=true)
 
 ## Development
 ### System Requirements
