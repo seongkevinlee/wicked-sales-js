@@ -38,7 +38,6 @@ body {
   padding-top: 6%;
   padding-bottom: 3%;
   flex-basis: 33%;
-  max-width: 90%;
 }
 
 
@@ -89,6 +88,9 @@ body {
 
 .card-container {
   width: 40%;
+}
+.card-container:hover {
+  box-shadow: 0 0 15px dodgerblue;
 }
 
 /* .card-info {

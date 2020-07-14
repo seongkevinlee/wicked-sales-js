@@ -30,14 +30,14 @@ export default class CartSummary extends React.Component {
           </button>
         </div>
         <div className='d-flex flex-column align-items-center col-12'>
-          {this.props.cart.length <= 0 ? <h3 className='text-white m-5'>There are no items in your cart</h3> : this.renderCartItems()}
+          {this.props.cart.length <= 0 ? <h3 className='no-items text-white m-5'>There are no items in your cart</h3> : this.renderCartItems()}
         </div>
-        <div className='ml-5 mr-5 mb-5 d-flex justify-content-between'>
-          <h2>
+        <div className='col-11 m-auto d-flex justify-content-between align-items-center'>
+          <h2 className="cart-total">
             {`Total: $${CalculateTotalCost(this.props)}.00`}
           </h2>
           <button
-            className='btn btn-primary'
+            className='checkout-btn btn btn-primary'
             onClick={() => this.props.setView('checkout', {})}>
             Checkout
           </button>
