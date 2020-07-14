@@ -84,7 +84,7 @@ export default class CheckoutForm extends React.Component {
               &lt; Continue Shopping
           </button>
           <button
-            className='btn btn-success'
+            className={this.props.cart.length === 0 ? 'btn btn-success d-none' : 'btn btn-success'}
             onClick={() => this.props.placeOrder(order)}>
             Place Order
           </button>

@@ -31,10 +31,10 @@ export default class ProductDetails extends React.Component {
           <button className='btn btn-info' onClick={() => this.props.setView('catalog', {})}>&lt; Back to catalog</button>
         </div>
         <div className='product-detail-top d-flex no-wrap pl-3 pr-3 align-items-center'>
-          <div className='col-6'>
+          <div className='col-sm-6'>
             <img className='img-fluid' src={this.state.product ? this.state.product.image : 'No product found'} alt=""/>
           </div>
-          <div className='d-flex flex-column justify-content-start pt-2'>
+          <div className='product-desc d-flex flex-column justify-content-start pt-2'>
             <h3>{this.state.product ? this.state.product.name : 'No product found'}</h3>
             <h4 className='text-muted mt-3 mb-3'>{this.state.product ? `$${this.state.product.price}` : 'No product found'}</h4>
             <p>{this.state.product ? this.state.product.shortDescription : 'No product found'}</p>
