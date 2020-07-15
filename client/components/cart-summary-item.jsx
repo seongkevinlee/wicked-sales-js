@@ -8,7 +8,7 @@ export default function CartSummaryItem(props) {
   const description = props.cartItems.shortDescription;
 
   return (
-    <div className='d-flex col-11 img-thumbnail m-3 pt-3 pb-3'>
+    <div className='d-flex img-thumbnail m-3 pt-3 pb-3'>
       <div className='cart-img-container col-6 text-center d-flex align-items-center'>
         <img className='img-fluid cart-image' src={props.cartItems ? image : 'No product found'} alt={name} />
       </div>
