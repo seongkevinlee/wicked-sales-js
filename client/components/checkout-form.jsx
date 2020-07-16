@@ -11,6 +11,7 @@ export default class CheckoutForm extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.noEmptyFields = this.noEmptyFields.bind(this);
   }
 
   handleChange(event) {
@@ -31,10 +32,16 @@ export default class CheckoutForm extends React.Component {
     }
   }
 
+  noEmptyFields() {
+    if (this.state.name && this.state.creditCard && this.state.address) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   render() {
-    const { name } = this.state;
-    const { creditCard } = this.state;
-    const { address } = this.state;
+    const { name, creditCard, address } = this.state;
     const order = {
       name,
       creditCard,
@@ -84,6 +91,7 @@ export default class CheckoutForm extends React.Component {
               &lt; Continue Shopping
           </button>
           <button
+            disabled={this.noEmptyFields()}
             className={this.props.cart.length === 0 ? 'btn btn-success d-none' : 'btn btn-success'}
             onClick={() => this.props.placeOrder(order)}>
             Place Order
