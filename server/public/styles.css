@@ -112,3 +112,7 @@ body {
 .img-thumbnail {
   background-color: rgb(255, 255, 255);
 }
+
+.shopping-cart {
+  cursor: pointer;
+}
