@@ -84,6 +84,9 @@
   .cart-total {
     font-size: 1.5rem;
   }
+  .checkout {
+    margin-top: 17%;
+  }
 
 }
 
@@ -120,12 +123,6 @@
   }
   .cart-item-desc > p {
     font-size: .8rem;
-  }
-
-
-  .checkout {
-    margin-top: 17%;
-    max-width: 90%;
   }
 
 }
