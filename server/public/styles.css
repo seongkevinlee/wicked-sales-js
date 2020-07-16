@@ -93,10 +93,14 @@ body {
   box-shadow: 0 0 15px dodgerblue;
 }
 
-/* .card-info {
-  overflow: hidden scroll;
-  scroll-behavior: smooth;
-} */
+.cart-total {
+  color: white;
+  text-shadow: 0 4px 8px black;
+}
+
+.no-items {
+  text-shadow: 0 4px 8px black;
+}
 
 .cart-image {
   object-fit: contain;
