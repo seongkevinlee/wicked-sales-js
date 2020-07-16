@@ -12,7 +12,7 @@ export default function Header(props) {
         <header
           className='shopping-cart d-inline-flex align-items-center'
           onClick={() => props.setView('cart', {})}
-          type='button'>
+          type='image'>
           <h4>{`${props.cartItemCount} Items`}</h4>
           <i className="fas fa-shopping-cart fa-2x ml-2 mr-5"></i>
         </header>
