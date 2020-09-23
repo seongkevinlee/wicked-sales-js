@@ -90,7 +90,9 @@ body {
   width: 40%;
 }
 .card-container:hover {
-  box-shadow: 0 0 15px dodgerblue;
+  transition: ease-in-out .7s;
+  box-shadow: 0 0 20px 15px dodgerblue;
+  transform: scale(1.05);
 }
 
 .cart-total {
