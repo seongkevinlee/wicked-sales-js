@@ -90,7 +90,7 @@ body {
   width: 40%;
 }
 .card-container:hover {
-  transition: ease-in-out .7s;
+  transition: ease-in-out .5s;
   box-shadow: 0 0 20px 15px dodgerblue;
   transform: scale(1.02);
 }
