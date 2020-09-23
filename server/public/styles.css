@@ -92,7 +92,7 @@ body {
 .card-container:hover {
   transition: ease-in-out .7s;
   box-shadow: 0 0 20px 15px dodgerblue;
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .cart-total {
