@@ -1,33 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
-export default function Modal(props) {
-  $('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus');
-  });
-  $(window).on('load', function () {
-    $('#myModal').modal('show');
-  });
+export default function WarningModal(props) {
+  const [show, setShow] = useState(true);
+
+  const handleClose = () => setShow(false);
 
   return (
-    <div className="modal show fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div className="modal-dialog" role="document">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div className="modal-body">
-            ...
-          </div>
-          <div className="modal-footer">
-            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" className="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    <>
 
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        centered
+        size="lg"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>NOTICE</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Please note that this website is for demonstration purposes only. By clicking the following button, I understand that no real purchases will be made and that personal information such as names, addresses, and real credit card numbers should not be used.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>Understood</Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
 }
