@@ -90,7 +90,7 @@ body {
   width: 30%;
 }
 .card-container:hover {
-  transition: ease-in-out .5s;
+  transition: ease-in-out .3s;
   box-shadow: 0 0 10px 10px rgba(201, 201, 143, 0.767);
   transform: scale(1.02);
 }
