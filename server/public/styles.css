@@ -91,7 +91,7 @@ body {
 }
 .card-container:hover {
   transition: ease-in-out .5s;
-  box-shadow: 0 0 20px 15px dodgerblue;
+  box-shadow: 0 0 10px 10px dodgerblue;
   transform: scale(1.02);
 }
 
