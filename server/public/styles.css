@@ -81,7 +81,7 @@ body {
 .product-img {
   margin: auto;
   object-fit: contain;
-  width: 100%;
+  width: 70%;
   cursor: pointer;
   border-radius: 9px;
 }
