@@ -26,16 +26,16 @@ export default class CartSummary extends React.Component {
       <div>
         <WarningModal/>
         <div className="cart-summary">
-          <div className="m-auto col-sm-11">
+          <div className="back-btn-container m-auto">
             <button className='back-btn btn btn-info'
               onClick={() => this.props.setView('catalog', {})}>
             &lt; Back to catalog
             </button>
           </div>
-          <div className='d-flex flex-column align-items-center col-12'>
+          <div className='d-flex flex-column align-items-center'>
             {this.props.cart.length <= 0 ? <h3 className='no-items text-white m-5'>There are no items in your cart</h3> : this.renderCartItems()}
           </div>
-          <div className='col-11 m-auto d-flex justify-content-between align-items-center'>
+          <div className='cart-total-container m-auto d-flex justify-content-between align-items-center'>
             <h2 className="cart-total">
               {`Total: $${CalculateTotalCost(this.props)}.00`}
             </h2>

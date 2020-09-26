@@ -4,6 +4,12 @@
 
   .product-details {
     margin-top: 12%;
+    max-width: 85%;
+  }
+
+  .product-detail-img {
+  width: 250px;
+  height: 250px;
   }
 
 
