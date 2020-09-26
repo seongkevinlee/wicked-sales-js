@@ -71,11 +71,11 @@ body {
 
 .product-detail-top {
   background-color: white;
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 4px 4px 0px 0px;
 }
 .product-long-desc {
   background-color: white;
-    border-radius: 0px 0px 5px 5px;
+    border-radius: 0px 0px 4px 4px;
 }
 
 .product-img {

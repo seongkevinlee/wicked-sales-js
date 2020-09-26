@@ -26,7 +26,7 @@ export default class ProductDetails extends React.Component {
 
   render() {
     return (
-      <div className='product-details container'>
+      <div className='product-details'>
         <div className='mb-4'>
           <button className='btn btn-info' onClick={() => this.props.setView('catalog', {})}>&lt; Back to catalog</button>
         </div>
