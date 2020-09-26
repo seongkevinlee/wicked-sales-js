@@ -1,5 +1,6 @@
 import React from 'react';
 import CalculateTotalCost from './calculate-total-cost';
+import WarningModal from './modal';
 
 export default class CheckoutForm extends React.Component {
   constructor(props) {
@@ -49,7 +50,8 @@ export default class CheckoutForm extends React.Component {
     };
 
     return (
-      <div className='checkout col-10'>
+      <div className='checkout'>
+        <WarningModal/>
         <h1>My Cart</h1>
         <h4 className='text-muted mt-3'>
           {`Order Total: $${CalculateTotalCost(this.props)}.00`}
