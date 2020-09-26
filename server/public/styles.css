@@ -81,7 +81,7 @@ body {
 .product-img {
   margin: auto;
   object-fit: contain;
-  width: 60%;
+  width: 100%;
   cursor: pointer;
   border-radius: 9px;
 }
@@ -109,10 +109,14 @@ body {
   text-shadow: 0 4px 8px black;
 }
 
+.cart-img-container {
+  width: 100%;
+}
+
 .cart-image {
   object-fit: contain;
   border-radius: 9px;
-  max-width: 75%;
+  max-width: 100%;
   margin: auto;
 }
 

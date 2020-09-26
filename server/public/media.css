@@ -126,7 +126,13 @@
   }
   .img-thumbnail {
     flex-direction: column;
+    max-width: 85%;
   }
+
+  .back-btn-container {
+    max-width: 85%;
+  }
+
   .cart-img-container {
     max-width: 100%;
   }
