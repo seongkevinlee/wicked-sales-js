@@ -45,9 +45,9 @@ export default class CheckoutForm extends React.Component {
 
   checkoutItems() {
     const checkoutItems = this.props.cart;
-    const checkoutItemsList = checkoutItems.map(checkoutItem => {
+    const checkoutItemsList = checkoutItems.map((checkoutItem, index) => {
       return (
-        <ListGroup.Item key={checkoutItem.productId} className="d-inline-flex justify-content-between align-items-center">
+        <ListGroup.Item key={index} className="d-inline-flex justify-content-between align-items-center">
           <div className="d-inline-flex justify-content-start align-items-center">
             <img className="checkout-img" src={checkoutItem.image} alt="checkoutItem.name"/>
             <p className="pl-2">{`${checkoutItem.name}`}</p>
