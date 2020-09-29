@@ -14,8 +14,7 @@ export default function WarningModal(props) {
         show={show}
         onHide={handleClose}
         backdrop="static"
-        keyboard={false}
-        centered
+        keyboard={false} centered
         size="lg"
       >
         <Modal.Header closeButton>
