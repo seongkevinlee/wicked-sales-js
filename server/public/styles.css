@@ -28,6 +28,9 @@ body {
   position: fixed;
   z-index: 1;
 }
+.header-title {
+  cursor: pointer;
+}
 .aperture-icon {
   width: 40px;
   height: 40px;
