@@ -1,12 +1,15 @@
 import React from 'react';
+import CartModal from './modal-cart-added';
 
 export default class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: null
+      product: null,
+      modalShow: false
     };
 
+    this.setModalShow = this.setModalShow.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +27,12 @@ export default class ProductDetails extends React.Component {
       .catch(err => console.error(err));
   }
 
+  setModalShow(modalState) {
+    this.setState({
+      modalShow: modalState
+    });
+  }
+
   render() {
     return (
       <div className='product-details'>
@@ -38,7 +47,18 @@ export default class ProductDetails extends React.Component {
             <h3>{this.state.product ? this.state.product.name : 'No product found'}</h3>
             <h4 className='text-muted mt-3 mb-3'>{this.state.product ? `$${this.state.product.price}` : 'No product found'}</h4>
             <p>{this.state.product ? this.state.product.shortDescription : 'No product found'}</p>
-            <button className='btn btn-primary' onClick={() => this.props.addToCart(this.state.product)}>Add to cart</button>
+            <button
+              className='btn btn-primary'
+              onClick={() => {
+                this.setModalShow(true);
+                this.props.addToCart(this.state.product);
+              }}>
+                Add to cart
+            </button>
+            <CartModal
+              show={this.state.modalShow}
+              onHide={() => this.setModalShow(false)}
+            />
           </div>
         </div>
         <div className="product-long-desc p-3">
