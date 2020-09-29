@@ -1,5 +1,5 @@
 @media only screen
-  and (max-device-width: 766px)
+  and (max-device-width: 768px)
   and (orientation: portrait) {
 
   .product-details {
@@ -13,9 +13,18 @@
   }
 
   .checkout {
+    margin-top: 15%;
     max-width: 85%;
     padding-left: 10px;
     padding-right: 10px;
+  }
+
+  .checkout-btn {
+    font-size: 1.5rem;
+  }
+
+  .img-thumbnail {
+    max-width: 90%;
   }
 
 

@@ -120,6 +120,11 @@ body {
   margin: auto;
 }
 
+.checkout-img {
+  width: 100px;
+  height: 100px;
+}
+
 .back-btn-container, .cart-total-container {
   max-width: 70%;
 }

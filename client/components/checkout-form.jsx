@@ -1,6 +1,7 @@
 import React from 'react';
 import CalculateTotalCost from './calculate-total-cost';
 import WarningModal from './modal';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 export default class CheckoutForm extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ export default class CheckoutForm extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.noEmptyFields = this.noEmptyFields.bind(this);
+    this.checkoutItems = this.checkoutItems.bind(this);
   }
 
   handleChange(event) {
@@ -41,6 +43,24 @@ export default class CheckoutForm extends React.Component {
     }
   }
 
+  checkoutItems() {
+    const checkoutItems = this.props.cart;
+    const checkoutItemsList = checkoutItems.map((checkoutItem, index) => {
+      return (
+        <ListGroup.Item key={index} className="d-inline-flex justify-content-between align-items-center">
+          <div className="d-inline-flex justify-content-start align-items-center">
+            <img className="checkout-img" src={checkoutItem.image} alt="checkoutItem.name"/>
+            <p className="pl-2">{`${checkoutItem.name}`}</p>
+          </div>
+          <p>{`$${checkoutItem.price}.00`}</p>
+        </ListGroup.Item>
+      );
+    });
+    return (
+      checkoutItemsList
+    );
+  }
+
   render() {
     const { name, creditCard, address } = this.state;
     const order = {
@@ -50,13 +70,20 @@ export default class CheckoutForm extends React.Component {
     };
 
     return (
-      <div className='checkout'>
+      <div className='checkout p-2'>
         <WarningModal/>
-        <h1>My Cart</h1>
-        <h4 className='text-muted mt-3'>
+        <h1 className="mb-3">My Cart</h1>
+        <ListGroup >
+          <header className="d-inline-flex justify-content-between">
+            <h4 className="pl-4">Product</h4>
+            <h4 className="pr-4">Price</h4>
+          </header>
+          {this.checkoutItems()}
+        </ListGroup>
+        <h4 className='text-muted mt-3 text-right'>
           {`Order Total: $${CalculateTotalCost(this.props)}.00`}
         </h4>
-        <form className='pt-4'>
+        <form className='pt-5'>
           <div className="form-group">
             <label htmlFor="name-input">Name</label>
             <input
