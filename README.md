@@ -1,5 +1,5 @@
 # wicked-sales-js
-A full stack Node.js and React shopping card app.
+A full stack Node.js and React shopping card app where users can add items into his or her shopping cart.
 
 ## Live Demo
 Try the application live at [[http://lens-craft.seongkevinlee.com](http://lens-craft.seongkevinlee.com)]
