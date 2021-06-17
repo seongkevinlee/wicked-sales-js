@@ -15,6 +15,7 @@ Try the application live at [[http://lens-craft.seongkevinlee.com](http://lens-c
 * Express
 * Webpack 4
 * Babel
+* AWS EC2
 
 ## Features
 * User can view the products for sale - Back End.
